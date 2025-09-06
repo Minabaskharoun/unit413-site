@@ -402,45 +402,55 @@ We are dedicated to fostering a spirit of teamwork, discipline, and service, hel
     <section id="contact"><h2>Contact</h2><p>Email: <a href="unit413@saintabanoub.com ">unit413@saintabanoub.com </a></p></section>
 
 <!----Leaders only--> 
-    <div class="wrap">
-<div class="card" id="gate">
-<h1>Leaders Portal</h1>
-<p class="muted">This page is for unit leaders. Enter the password to continue.</p>
-<form id="gate-form">
-<label for="pw">Password</label>
-<input type="password" id="pw" autocomplete="current-password" placeholder="Enter leaders password" required>
-<button type="submit">Enter</button>
-<div id="msg" class="muted" style="margin-top:.6rem"></div>
-</form>
-<p style="margin-top:1rem"><a href="index.html">← Home</a></p>
+   <div class="wrap">
+<div class="topbar">
+<a class="btn" href="index.html">← Home</a>
+<a class="btn" href="#" id="signout">Sign out</a>
+</div>
+
+
+<div class="card">
+<h1>Leaders Announcements</h1>
+<h3>The Trainer’s EDGE — September 20, 2025, 8:00 AM–4:00 PM</h3>
+</div>
+
+
+<div class="card">
+<h2>Training links</h2>
+<ul>
+<li><a href="https://drive.google.com/drive/folders/1CTC9KWwxnwWMCMUtQW7TH_cU8k8LHNDx?usp=drive_link">Advancement Tracking System | Google Drive</a></li>
+<li><a href="https://my.scouting.org/home">Youth Protection Training</a></li>
+</ul>
 </div>
 
 <div class="card" id="content">
 <ul>
-<h2>Leaders annoucments</h2>
-  <h2> Welcome Leaders</h2>
+<li>Leaders annoucments </li>
+      <h3>The Trainer’s EDGE — September 20, 2025, 8:00 AM–4:00 PM </h3>
+      <h3> </h3>
+  
   <h2>Training links</h2>
 <li> <a href="https://drive.google.com/drive/folders/1CTC9KWwxnwWMCMUtQW7TH_cU8k8LHNDx?usp=drive_link">Advancement Tracking System | Google Drive </a> </li>
+<li> <a href="https://my.scouting.org/home"> Youth Protection Training </a> </li>
+
 </ul>
 <p style="margin-top:1rem"><a href="index.html">← Home</a></p>
 </div>
 </div>
 
 <script>
-// Simple client-side password gate (not secure for protecting sensitive data).
-// Change this to your own password:
-const PASSWORD = "Leaders4i3!"; // ← EDIT THIS
-const form = document.getElementById('gate-form');
-const input = document.getElementById('pw');
-const msg = document.getElementById('msg');
-
-
-form.addEventListener('submit', function(e){
+// Guard: if user didn't come from the portal, send them back.
+try {
+if(sessionStorage.getItem('leadersAuth') !== 'ok'){
+window.location.replace('leaders-portal.html');
+}
+} catch(e) {}
+// Sign out clears the session flag.
+document.getElementById('signout').addEventListener('click', function(e){
 e.preventDefault();
-if(input.value === PASSWORD){
-document.getElementById('gate').style.display = 'none';
-document.getElementById('content').style.display = 'block';
-} else {
+try { sessionStorage.removeItem('leadersAuth'); } catch(e) {}
+window.location.replace('leaders-portal.html');
+});
 </script>
 
 <!--footer--->    
