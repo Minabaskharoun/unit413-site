@@ -145,7 +145,7 @@
       <a href="#payments">Online Payments</a>
       <a href="#bsaportal">BSA Portal</a>
       <a href="#contact">Contact</a>
-      <a href="#Leaders">Leaders</a>
+      <a href="leaders.html">Leaders</a>
     </nav>
   </aside>
 
@@ -400,34 +400,47 @@ We are dedicated to fostering a spirit of teamwork, discipline, and service, hel
     <section id="payments"><h2>Online Payments</h2><p class="muted">Link to your payment portal.</p></section>
     <section id="bsaportal"><h2>BSA Portal</h2><p class="muted">Council/district or registration links.</p></section>
     <section id="contact"><h2>Contact</h2><p>Email: <a href="unit413@saintabanoub.com ">unit413@saintabanoub.com </a></p></section>
-    
-    <section id="honor"><h2>Leaders Portal</h2><p class="muted">This page is for unit leaders. Enter the password to continue.</p>
-    <form id="gate-form">
-<label for="pw">Password</label>
-<input type="password" id="pw" autocomplete="current-password" placeholder="Enter leaders password" required>
-<button type="submit">Enter</button>
-<div id="msg" class="muted" style="margin-top:.6rem"></div>
-</form>
-      
-    <script>
-const PASSWORD = "Unit413!"; 
-const form = document.getElementById('gate-form');
-const input = document.getElementById('pw');
-const msg = document.getElementById('msg');
 
-form.addEventListener('submit', function(e){
-e.preventDefault();
-if(input.value === PASSWORD){
-document.getElementById('gate').style.display = 'none';
-document.getElementById('content').style.display = 'block';
-} else {
-msg.textContent = 'Incorrect password. Please try again.';
-input.value = '';
-input.focus();
-}
-});
+   <!----->
+<div class="wrap">
+  <div class="card" role="region" aria-labelledby="t">
+    <h1 id="t">Leaders Portal</h1>
+    <p class="muted">This page is for unit leaders. Enter the password to continue.</p>
+    <form id="gate-form" autocomplete="off">
+      <label for="pw">Password</label>
+      <input type="password" id="pw" placeholder="Enter leaders password" required aria-required="true" />
+      <button type="submit">Enter</button>
+      <div id="msg" class="muted" style="margin-top:.6rem"></div>
+    </form>
+    <div class="note">
+      Heads-up: this is a simple client-side gate suitable for a public site (GitHub Pages). For true security, you need server-side auth or a service like Cloudflare Access / Netlify Identity.
+    </div>
+  </div>
+  <p style="margin-top:1rem"><a href="index.html">← Back to Unit 413</a></p>
+</div>
+
+<script>
+  // ⚠️ Client-side only (obfuscation, not real security)
+  const PASSWORD = "Unit413!"; // change as needed
+  const OK_TOKEN = "u413_auth";
+
+  const form = document.getElementById('gate-form');
+  const input = document.getElementById('pw');
+  const msg = document.getElementById('msg');
+
+  form.addEventListener('submit', function(e){
+    e.preventDefault();
+    if(input.value === PASSWORD){
+      sessionStorage.setItem(OK_TOKEN, "1");
+      window.location.href = "leaders-portal.html";
+    } else {
+      msg.textContent = "Incorrect password. Please try again.";
+      input.value = "";
+      input.focus();
+    }
+  });
 </script>
-    </section>
+
 
 
 
