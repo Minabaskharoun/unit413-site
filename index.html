@@ -135,19 +135,54 @@
       <a href="#scoutmaster.html">Scoutmaster Minutes</a>
       <a href="#bulletin.html">Unit Bulletin Board</a>
       <a href="#campout.html">Campout Resources</a>
-      <a href="#adventure">High Adventure</a>
-      <a href="#about">About Scouting</a>
-      <a href="#resources">Scout Resources</a>
-      <a href="#photos">Photo Albums</a>
-      <a href="#classb">Class B Store</a>
-      <a href="#join">Join Scouts!</a>
-      <a href="#payments">Online Payments</a>
-      <!--a href="#state">State of the Unit</a-->
-      <!--a href="#bsaportal">BSA Portal</a-->
-      <a href="#contact">Contact</a>
+      <a href="#adventure.html">High Adventure</a>
+      <a href="#about.html">About Scouting</a>
+      <a href="#resources.html">Scout Resources</a>
+      <a href="#photos.html">Photo Albums</a>
+      <a href="#classb.html">Class B Store</a>
+      <a href="#join.html">Join Scouts!</a>
+      <a href="#payments.html">Online Payments</a>
+      <!--a href="#state.html">State of the Unit</a-->
+      <!--a href="#bsaportal.html">BSA Portal</a-->
+      <a href="#contact.html">Contact</a>
       <a href="leaders.html">Leaders</a>
     </nav>
   </aside>
+
+
+  <script>
+    (function () {
+      const map = {
+        '#home': 'index.html',
+        '#calendar': 'calendar.html',
+        '#news': 'news.html',
+        '#honor': 'honor.html',
+        '#schedule': 'schedule.html',
+        '#aboutu413': 'aboutu413.html',
+        '#scoutmaster': 'scoutmaster.html',
+        '#bulletin': 'bulletin.html',
+        '#campout': 'campout.html',
+        '#adventure': 'adventure.html',
+        '#about': 'about.html',
+        '#resources': 'resources.html',
+        '#photos': 'photos.html',
+        '#classb': 'classb.html',
+        '#join': 'join.html',
+        '#payments': 'payments.html',
+        '#state': 'state.html',
+        '#bsaportal': 'bsaportal.html',
+        '#contact': 'contact.html',
+        '#leaders': 'leaders.html'
+        
+      };
+      const h = (location.hash || '').toLowerCase();
+      if (map[h]) {
+        // replace() avoids an extra "Back" step in history
+        location.replace('/' + map[h]);
+      }
+    })();
+    </script>
+    
 
   <!-- Main -->
   <main id="main">
